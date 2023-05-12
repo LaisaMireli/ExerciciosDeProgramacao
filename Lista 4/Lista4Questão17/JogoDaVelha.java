@@ -131,22 +131,4 @@ public class JogoDaVelha {
 		
 	}
 	
-	public void jogarNovamente() {
-		
-		Scanner scanner = new Scanner(System.in);
-		String jogarDeNovo;
-		
-		System.out.println("Você deseja jogar novamente?\n Sim/Não");
-		jogarDeNovo = scanner.next();
-		
-		if(jogarDeNovo.equals("Sim") || jogarDeNovo.equals("S") ||
-			jogarDeNovo.equals("sim") || jogarDeNovo.equals("s") || jogarDeNovo.equals("SIM")) {
-			
-			 
-			
-		}
-		
-	}
-	
-	
 }
