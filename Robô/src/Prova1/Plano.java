@@ -24,7 +24,7 @@ public class Plano {
 			for (int i = 0; i < listaCelulas.size(); i++) {
 				Celula aux = listaCelulas.get(i);
 				if (listaCelulas.get(i).robo != null) {
-					System.out.println("tem robo! " + aux.robo.nome + "  - x: " + aux.posicaoX + "  - y: " + aux.posicaoY);
+					System.out.println("tem robo! " + aux.robo.nome + "  - y: " + aux.posicaoY + "  - x: " + aux.posicaoX );
 				}
 				else{
 					System.out.println("nao tem robo");

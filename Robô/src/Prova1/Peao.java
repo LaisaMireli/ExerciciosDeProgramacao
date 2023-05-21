@@ -10,6 +10,12 @@ public class Peao extends Robo {
 	}
 	public void direitaPeao (int passos) {
 		
+		if(passos > 1) {
+			
+			System.out.println("\\nO peão [=] só anda até 1 passo por vez\n");
+			return;
+		}
+		
 		for (int i = 0; i < passos; i++) {
 	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 	        Celula novaCelula = plano.retornarCelula(posicaox + 1, posicaoy);
@@ -18,7 +24,31 @@ public class Peao extends Robo {
 	        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
 	            celulaAtual.robo = null;
 	            novaCelula.robo = this;
-	            posicaoy += 1;
+	            posicaox += 1;
+	        } else {
+	        	System.out.println();  	
+	        }
+	    }
+		
+	}
+	
+	public void esquerdaPeao (int passos) {
+		
+		if(passos > 1) {
+			
+			System.out.println("\\nO peão [=] só anda até 1 passo por vez\n");
+			return;
+		}
+		
+		for (int i = 0; i < passos; i++) {
+	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
+	        Celula novaCelula = plano.retornarCelula(posicaox - 1, posicaoy);
+
+	        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
+	        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
+	            celulaAtual.robo = null;
+	            novaCelula.robo = this;
+	            posicaox -= 1;
 	        } else {
 	        	System.out.println();  	
 	        }

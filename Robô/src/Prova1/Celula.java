@@ -7,7 +7,7 @@ public class Celula {
 	public int id;
 	public Robo robo;	
 	
-	public Celula(int id, int x , int y) {
+	public Celula(int id, int y , int x) {
 		posicaoX = x;
 		posicaoY = y;
 		this.id = id;

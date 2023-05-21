@@ -9,7 +9,7 @@ public abstract class Robo {
 	public Plano plano;
 	public char tipoRobo;
 	
-	public Robo(int id, String nome, int posicaox, int posicaoy, Plano plano) {
+	public Robo(int id, String nome, int posicaoy, int posicaox, Plano plano) {
 			
 			this.id = id;
 			this.nome = nome;
@@ -31,21 +31,6 @@ public abstract class Robo {
 			}
 		}
 	
-		public void moverEsquerda() {
-			for (int i = 0; i < plano.listaCelulas.size(); i++) {
-	
-				if (plano.listaCelulas.get(i).robo != null) {
-					plano.listaCelulas.get(i).robo = null;
-					plano.listaCelulas.get(i - 1).robo = this;
-				}
-			}
-	
-		}
-	
-		public int moverDireita() {
-			return posicaox + 1;
-		}
-		
 
 	public char getTipoRobo() {
 		return tipoRobo;
