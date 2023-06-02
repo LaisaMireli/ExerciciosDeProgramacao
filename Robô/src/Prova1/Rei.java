@@ -6,17 +6,24 @@ public class Rei extends Robo {
 		super(id, nome, posicaoy, posicaox, plano);
 		
 		tipoRobo = 'º';
-	}//se move para cima/baixo, esquerda/direita mas apenas uma casa
+	}//se move para cima/baixo, esquerda/direita mas apenas uma casa por vez
 	
 	public void subirRei (int passos) {
+		
+		if(passos > 1) {
+			
+			System.out.println("\nO rei [º] só anda até 1 casa por vez\n");
+			return;
+		}
 			
 			for (int i = 0; i < passos; i++) {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox, posicaoy - 1);
 	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-		        	celulaAtual.robo = null;
-		            novaCelula.robo = this;
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+		        	
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaoy -= 1;
 		        } else {
 		        	System.out.println();  	
@@ -26,14 +33,22 @@ public class Rei extends Robo {
 		}
 		
 		public void descerRei (int passos) {
+			
+			if(passos > 1) {
+				
+				System.out.println("\nO rei [º] só anda até 1 casa por vez\n");
+				return;
+			}
+			
 			for (int i = 0; i < passos; i++) {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox, posicaoy + 1);
 	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
 		        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
 	
-		            novaCelula.robo = this;
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaoy += 1;
 		        } else {
 		        	System.out.println();  	
@@ -53,10 +68,10 @@ public class Rei extends Robo {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox + 1, posicaoy);
 
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
 		        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-		            celulaAtual.robo = null;
-		            novaCelula.robo = this;
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaox += 1;
 		        } else {
 		        	System.out.println();  	
@@ -77,10 +92,10 @@ public class Rei extends Robo {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox - 1, posicaoy);
 
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
 		        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-		            celulaAtual.robo = null;
-		            novaCelula.robo = this;
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaox -= 1;
 		        } else {
 		        	System.out.println();  	

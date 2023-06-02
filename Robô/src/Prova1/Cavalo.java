@@ -8,37 +8,16 @@ public class Cavalo extends Robo{
 		tipoRobo = '#';
 	}
 	
-	public void direitaCimaCavalo (int passos) {
-			
-			for (int i = 0; i < passos; i++) {
-		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
-		        Celula novaCelula = plano.retornarCelula(posicaox + 1, posicaoy - 1);
-	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-		        	celulaAtual.robo = null;
-		            novaCelula.robo = this;
-		            posicaoy -= 1;
-		            posicaox += 1;
-		        } 
-		        else {
-		        	System.out.println();  	
-		        }
-		    }
-			
-		   }
-		
-	
-		public void esquerdaCimaCavalo (int passos) {
+		public void avancar (int passos) {
 				
 				
 			for (int i = 0; i < passos; i++) {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox - 1, posicaoy - 1);
 	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-		        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-		        	celulaAtual.robo = null;
-		            novaCelula.robo = this;
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaoy -= 1;
 		            posicaox -= 1;
 		        } else {
@@ -48,16 +27,16 @@ public class Cavalo extends Robo{
 	
 	}
 		
-		public void direitaBaixoCavalo (int passos) {
+		public void retroceder (int passos) {
 			
 			
 			for (int i = 0; i < passos; i++) {
 		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 		        Celula novaCelula = plano.retornarCelula(posicaox + 1, posicaoy + 1);
 	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-		        	celulaAtual.robo = null;
-		            novaCelula.robo = this;
+		        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+		        	celulaAtual.listaDeRobos.remove(this);
+		            novaCelula.listaDeRobos.add(this);
 		            posicaoy += 1;
 		            posicaox += 1;
 		        } 
@@ -68,25 +47,4 @@ public class Cavalo extends Robo{
 			
 		   }
 		
-		public void esquerdaBaixoCavalo (int passos) {
-			
-			
-			for (int i = 0; i < passos; i++) {
-		        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
-		        Celula novaCelula = plano.retornarCelula(posicaox - 1, posicaoy + 1);
-	
-		        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-		        	celulaAtual.robo = null;
-		            novaCelula.robo = this;
-		            posicaoy += 1;
-		            posicaox -= 1;
-		        } 
-		        else {
-		        	System.out.println();  	
-		        }
-		    }
-			
-		   }
-		
-
 }

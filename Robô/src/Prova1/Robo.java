@@ -8,6 +8,9 @@ public abstract class Robo {
 	public int posicaoy;
 	public Plano plano;
 	public char tipoRobo;
+	private int alunosSalvos;
+	private int bugsEncontrados;
+	private int pontuacao;
 	
 	public Robo(int id, String nome, int posicaoy, int posicaox, Plano plano) {
 			
@@ -16,21 +19,32 @@ public abstract class Robo {
 			this.posicaox = posicaox;
 			this.posicaoy = posicaoy;
 			this.plano = plano;
-			Celula celula = plano.retornarCelula(posicaox, posicaoy);
-			    if (celula != null) {
-			        celula.robo = this;
-			    }
-			
+				
 	
 			Celula aux = null;
 			for (int i = 0; i < plano.listaCelulas.size(); i++) {
 				aux = plano.listaCelulas.get(i);
 				if (aux.posicaoX == posicaox && aux.posicaoY == posicaoy) {
-					aux.robo = this;
+					aux.listaDeRobos.add(this);
 				}
 			}
 		}
 	
+	public void verificarSeTemEntidade() {
+		
+
+	}
+	
+	public Celula retornaCelulaAtual() {
+		
+		for(Celula celula : plano.listaCelulas) {
+			if(celula.posicaoX == this.posicaox && celula.posicaoY == this.posicaoy) {
+				return celula;
+			}
+		}
+		return null;
+		
+	}
 
 	public char getTipoRobo() {
 		return tipoRobo;
@@ -40,5 +54,4 @@ public abstract class Robo {
 		this.tipoRobo = tipoRobo;
 	}
 
-	
 	}

@@ -8,7 +8,7 @@ public class Torre extends Robo {
 		tipoRobo = '!';
 	}
 	
-	public void subirTorre (int passos) {
+	public void avancar (int passos) {
 			
 		if(passos < 1 || passos > 2) {
 			
@@ -20,9 +20,10 @@ public class Torre extends Robo {
 	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 	        Celula novaCelula = plano.retornarCelula(posicaox, posicaoy - 1);
 
-	        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-	        	celulaAtual.robo = null;
-	            novaCelula.robo = this;
+	        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+	        	
+	        	celulaAtual.listaDeRobos.remove(this);
+	            novaCelula.listaDeRobos.add(this);
 	            posicaoy -= 1;
 	        } 
 	        else {
@@ -33,7 +34,7 @@ public class Torre extends Robo {
 	   }
 	
 
-		public void descerTorre (int passos) {
+		public void retroceder (int passos) {
 			
 			if(passos < 1 || passos > 2) {
 				
@@ -45,10 +46,9 @@ public class Torre extends Robo {
 	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 	        Celula novaCelula = plano.retornarCelula(posicaox, posicaoy + 1);
 
-	        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-	        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-	        	celulaAtual.robo = null;
-	            novaCelula.robo = this;
+	        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+	        	celulaAtual.listaDeRobos.remove(this);
+	            novaCelula.listaDeRobos.add(this);
 	            posicaoy += 1;
 	        } else {
 	        	System.out.println();  	

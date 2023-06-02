@@ -8,11 +8,11 @@ public class Peao extends Robo {
 		tipoRobo = '=';
 		
 	}
-	public void direitaPeao (int passos) {
+	public void avancar (int passos) {
 		
 		if(passos > 1) {
 			
-			System.out.println("\\nO peão [=] só anda até 1 passo por vez\n");
+			System.out.println("\nO peão [=] só anda até 1 passo por vez\n");
 			return;
 		}
 		
@@ -20,11 +20,15 @@ public class Peao extends Robo {
 	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 	        Celula novaCelula = plano.retornarCelula(posicaox + 1, posicaoy);
 
-	        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-	        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-	            celulaAtual.robo = null;
-	            novaCelula.robo = this;
+	        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+	        	celulaAtual.listaDeRobos.remove(this);
+	            novaCelula.listaDeRobos.add(this);
 	            posicaox += 1;
+	            if (!celulaAtual.listaDeEntidades.isEmpty()) {
+	                AlunoBug entidade = celulaAtual.listaDeEntidades.get(0);
+	                System.out.println("Você encontrou um " + entidade.tipoEntidade + "!");
+	                celulaAtual.listaDeEntidades.remove(entidade);
+	            }
 	        } else {
 	        	System.out.println();  	
 	        }
@@ -32,11 +36,11 @@ public class Peao extends Robo {
 		
 	}
 	
-	public void esquerdaPeao (int passos) {
+	public void retroceder (int passos) {
 		
 		if(passos > 1) {
 			
-			System.out.println("\\nO peão [=] só anda até 1 passo por vez\n");
+			System.out.println("\nO peão [=] só anda até 1 passo por vez\n");
 			return;
 		}
 		
@@ -44,10 +48,9 @@ public class Peao extends Robo {
 	        Celula celulaAtual = plano.retornarCelula(posicaox, posicaoy);
 	        Celula novaCelula = plano.retornarCelula(posicaox - 1, posicaoy);
 
-	        if (celulaAtual != null && celulaAtual.robo != null && novaCelula != null) {
-	        	//esta deixando nulo mesmo quando tem o robo, fazer um if pra caso tenha um robo no deixar nulo
-	            celulaAtual.robo = null;
-	            novaCelula.robo = this;
+	        if (celulaAtual != null && celulaAtual.listaDeRobos != null && novaCelula != null) {
+	        	celulaAtual.listaDeRobos.remove(this);
+	            novaCelula.listaDeRobos.add(this);
 	            posicaox -= 1;
 	        } else {
 	        	System.out.println();  	
